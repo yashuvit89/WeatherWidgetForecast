@@ -1,4 +1,4 @@
-// @import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
 
 $main-bg-color: #f1f2f0;
 $accent-blue: #37bbe4;
@@ -6,6 +6,8 @@ $accent-gray: #e1e0dd;
 $accent-black: #35342f;
 $accent-orange: #ec6b2d;
 $accent-red: #dd6464;
+$min-color: #bababa;
+$max-color: #878787;
 
 body {
   background-color: $main-bg-color;
@@ -18,7 +20,6 @@ body {
 .main-app-container {
   padding-top: 2em;
   padding: 30px;
-  width: 720px;
 }
 
 .main-app-nav {
@@ -52,17 +53,40 @@ body {
   }
 }
 
+.extraDetails{
+  .details{
+    color: $max-color;
+    font-size: 0.6em;
+  }
+}
+
 .weekList {
   .weekDay{
-    height: 220px;
+    height: 200px;
+    text-align: center;
+    
+    .min{
+      color: $min-color;
+      margin-bottom: 5px;
+    }
+
+    .max{
+      color: $max-color;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.collection{
+  a.collection-item {
+    padding: 15px;
   }
 }
 
 footer {
   font-size: 0.75em;
   text-align: center;
-  padding-top: 10em;
-
   a {
     text-decoration: none;
     color: inherit;
@@ -71,4 +95,9 @@ footer {
       color: $accent-blue;
     }
   }
+}
+
+.details{
+  color: $max-color;
+  font-size: 0.8em;
 }

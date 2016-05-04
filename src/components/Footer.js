@@ -5,6 +5,7 @@ export default class Footer extends Component {
     return (
       <footer>
         <span id="footer-text-wrap">
+        	Weather Widget
         </span>
       </footer>
     );

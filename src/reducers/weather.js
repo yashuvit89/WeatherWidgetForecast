@@ -1,5 +1,5 @@
 import { CHANGE_CITY, REQUEST_WEATHER,
- RECEIVE_WEATHER, ADD_CITY, NO_CITY
+ RECEIVE_WEATHER, ADD_CITY, NO_CITY, SELECT_DAY
 } from '../constants/ActionTypes';
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
       temp: {day : ''},
       weather: [{icon: "01d"}]
     }]
-  }
+  },
+  selectedDay: 0
 }
 
 export default function weatherApp(state = initialState, action) {
@@ -35,6 +36,11 @@ export default function weatherApp(state = initialState, action) {
     case NO_CITY:
       return Object.assign({}, state, {
         cityError: "No City Found"
+      })
+
+    case SELECT_DAY:
+      return Object.assign({}, state, {
+        selectedDay: action.dayIndex
       })
 
 		default:

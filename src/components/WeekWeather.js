@@ -7,26 +7,26 @@ export default class WeekWeather extends Component {
   }
 
   render() {
-    // const { city, cityError } = this.props;
-    // const days = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'};
-    // const day = new Date(this.props.dt * 1000).getDay();
     const forecastDay = getDay(this.props.dt);
+    const { actions } = this.props;
 
     return (
-
-      <li className="card weekDay col s2 day">
+      <a href="#!" className="collection-item weekDay col s2 day" id={this.props.indexForSelection}
+        onClick={e => {
+         e.preventDefault();
+         actions.selectDay(this.props.indexForSelection + 1);
+       }}>
         <div className="">
           <div className="">{forecastDay}</div>
           <div className="">
             <img src={"http://openweathermap.org/img/w/" + this.props.weather[0].icon + ".png"} alt="" />
           </div>
-          <div className="">Day: {this.props.temp.day}</div>
-          <div className="">Min: {this.props.temp.min}</div>
-          <div className="">Max: {this.props.temp.max}</div>
-          <div className="">Weather: {this.props.weather[0].description}</div>
+          <div className="min">{this.props.temp.min} °C</div>
+          <div className="max">{this.props.temp.max} °C</div>
+          <div className="details">{this.props.weather[0].description}</div>
           <br />
         </div>
-      </li>
+      </a>
     );
   }
 }

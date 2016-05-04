@@ -6,3 +6,4 @@ export const REQUEST_WEATHER = 'REQUEST_WEATHER';
 export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
 export const ADD_CITY = 'ADD_CITY';
 export const NO_CITY = 'NO_CITY';
+export const SELECT_DAY = 'SELECT_DAY';

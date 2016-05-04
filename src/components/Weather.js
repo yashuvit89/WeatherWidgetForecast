@@ -16,9 +16,9 @@ export default class Weather extends Component {
 
   render() {
     let input;
-    const { weather } = this.props;
+    const { weather, actions } = this.props;
     const { forecast } = weather;
-    const currentDay = forecast.list[0]; //First list is the current day
+    const currentDay = forecast.list[weather.selectedDay]; //First list is the current day
     const restWeek = forecast.list.slice(1);
     const currentDayName = getDay(currentDay.dt);
 
@@ -52,15 +52,17 @@ export default class Weather extends Component {
         </div>
         <br />
         <div className="row temperature">
-         <img src={"http://openweathermap.org/img/w/" + currentDay.weather[0].icon + ".png"} alt="" />
-
-          {currentDay.temp.day}, {currentDayName}
+          <div className="">
+           <img src={"http://openweathermap.org/img/w/" + currentDay.weather[0].icon + ".png"} alt="" />
+            <span>{currentDay.temp.day} °C, {currentDayName} </span>
+            <br/>
+            <div className="details"> {currentDay.weather[0].description}</div>
+          </div>
         </div>
         <div className="row">
-        <h5> Forecast for the week </h5>
-          <ul className="weekList">
-            {restWeek.map(day =>
-              <WeekWeather className="row" key={day.dt} {...day}/>
+          <ul className="weekList collection with-header">
+            {restWeek.map((day,index) => 
+              <WeekWeather className="row" {...day} actions={actions} key={index} indexForSelection={index}/>
             )}
           </ul>
         </div>

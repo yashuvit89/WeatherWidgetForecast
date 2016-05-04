@@ -2,7 +2,7 @@ import fetch from 'isomorphic-fetch'
 
 import { 
 	CHANGE_CITY, REQUEST_WEATHER, 
-	RECEIVE_WEATHER, ADD_CITY, NO_CITY
+	RECEIVE_WEATHER, ADD_CITY, NO_CITY, SELECT_DAY
 	} from '../constants/ActionTypes';
 
 export function requestWeather(city) {
@@ -35,5 +35,12 @@ export function fetchWeather(city) {
       .then(json => {
       	json.cod === "200" ? dispatch(receiveWeather(city, json)) : dispatch(noCityFound(city, json))
       })
+  }
+}
+
+export function selectDay (dayIndex) {
+  return {
+    type: SELECT_DAY,
+    dayIndex: dayIndex
   }
 }
