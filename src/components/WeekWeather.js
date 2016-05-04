@@ -14,10 +14,16 @@ export default class WeekWeather extends Component {
 
     return (
 
-      <li className="day">
-        <div className="card counter-container">
-          <div className="counter-num-label">{forecastDay}</div>
-          <div className="counter-num-label">{this.props.temp.day}</div>
+      <li className="card weekDay col s2 day">
+        <div className="">
+          <div className="">{forecastDay}</div>
+          <div className="">
+            <img src={"http://openweathermap.org/img/w/" + this.props.weather[0].icon + ".png"} alt="" />
+          </div>
+          <div className="">Day: {this.props.temp.day}</div>
+          <div className="">Min: {this.props.temp.min}</div>
+          <div className="">Max: {this.props.temp.max}</div>
+          <div className="">Weather: {this.props.weather[0].description}</div>
           <br />
         </div>
       </li>

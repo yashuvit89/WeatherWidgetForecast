@@ -6,7 +6,10 @@ const initialState = {
 	// city: 'paris',
   forecast: {
     city : {name : 'Paris', country: 'FR'},
-    list : [ {temp: {day : ''}}]
+    list : [ {
+      temp: {day : ''},
+      weather: [{icon: "01d"}]
+    }]
   }
 }
 

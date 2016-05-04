@@ -9,7 +9,7 @@ export default class App extends Component {
   render() {
     const { weather, actions } = this.props;
     return (
-      <div className="main-app-container">
+      <div className="card main-app-container">
         <Weather weather={weather} actions={actions}/>
         <Footer />
       </div>
@@ -23,7 +23,6 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter,
     weather: state.weather
   };
 }

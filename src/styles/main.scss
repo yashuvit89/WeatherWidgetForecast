@@ -17,6 +17,8 @@ body {
 
 .main-app-container {
   padding-top: 2em;
+  padding: 30px;
+  width: 720px;
 }
 
 .main-app-nav {
@@ -24,11 +26,10 @@ body {
   text-align: center;
 }
 
-.counter-num-label {
+.weather-city-label {
   color: $accent-orange;
-  padding-top: 1em;
-  font-size: 3em;
-  text-align: center;
+  font-size: 2.5em;
+  text-align: left;
   width: 100%;
 }
 
@@ -40,29 +41,21 @@ body {
   letter-spacing: 3px;
 }
 
-.counter-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 3em;
-
-  button {
-    background-color: #CCC;
-    border: none;
-    height: 30px;
-    width: 80px;
-    margin-left: 1em;
-    margin-right: 1em;
-
-    &:hover {
-      background-color: $accent-gray;
-    }
-  }
-}
-
 .temperature {
   font-size: 2.5em;
   text-align: center;
+}
+
+.weather {
+  .input-field {
+    margin-top: 0;
+  }
+}
+
+.weekList {
+  .weekDay{
+    height: 220px;
+  }
 }
 
 footer {
@@ -77,9 +70,5 @@ footer {
     &:hover {
       color: $accent-blue;
     }
-  }
-
-  #heart{
-    color: $accent-red;
   }
 }

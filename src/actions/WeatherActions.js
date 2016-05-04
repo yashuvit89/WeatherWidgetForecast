@@ -5,20 +5,6 @@ import {
 	RECEIVE_WEATHER, ADD_CITY, NO_CITY
 	} from '../constants/ActionTypes';
 
-// export function changeCity (city) {
-//   return {
-//     type: CHANGE_CITY,
-//     city
-//   };
-// }
-
-export function addCity (city) {
-	return {
-		type: ADD_CITY,
-		city
-	}
-}
-
 export function requestWeather(city) {
   return {
     type: REQUEST_WEATHER,
@@ -44,7 +30,7 @@ export function noCityFound() {
 export function fetchWeather(city) {
   return dispatch => {
     dispatch(requestWeather(city))
-    return fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=6&units=metric&appid=61f69224001e7285e9d3192200613595`)
+    return fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=7&units=metric&appid=61f69224001e7285e9d3192200613595`)
       .then(response => response.json())
       .then(json => {
       	json.cod === "200" ? dispatch(receiveWeather(city, json)) : dispatch(noCityFound(city, json))
