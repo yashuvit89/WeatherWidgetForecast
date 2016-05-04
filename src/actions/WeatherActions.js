@@ -42,11 +42,8 @@ export function noCityFound() {
 }
 
 export function fetchWeather(city) {
-	console.log(city);
   return dispatch => {
-  	// dispatch(changeCity(city))
     dispatch(requestWeather(city))
-    // return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&mode=json&appid=61f69224001e7285e9d3192200613595&cnt=6`)
     return fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=6&units=metric&appid=61f69224001e7285e9d3192200613595`)
       .then(response => response.json())
       .then(json => {
