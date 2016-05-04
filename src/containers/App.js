@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
+import * as WeatherActions from '../actions/WeatherActions';
 import Counter from '../components/Counter';
+import Weather from '../components/Weather';
 import Footer from '../components/Footer';
 
 /**
@@ -13,12 +15,13 @@ import Footer from '../components/Footer';
 export default class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    const { counter, weather, actions } = this.props;
     return (
       <div className="main-app-container">
-        <div className="main-app-nav">Simple Redux Boilerplate</div>
+        <div className="main-app-nav">Counter</div>
         {/* notice that we then pass those unpacked props into the Counter component */}
         <Counter counter={counter} actions={actions} />
+        <Weather weather={weather} actions={actions}/>
         <Footer />
       </div>
     );
@@ -37,7 +40,8 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter,
+    weather: state.weather
   };
 }
 
@@ -51,7 +55,7 @@ function mapStateToProps(state) {
  */
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(Object.assign({}, CounterActions, WeatherActions), dispatch)
   };
 }
 

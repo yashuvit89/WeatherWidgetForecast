@@ -5,3 +5,20 @@
  */
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+
+/*
+ Weather
+*/
+export const CHANGE_CITY = 'CHANGE_CITY';
+export const REQUEST_WEATHER = 'REQUEST_WEATHER';
+export const RECEIVE_WEATHER = 'RECEIVE_WEATHER';
+export const ADD_CITY = 'ADD_CITY';
+
+
+export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const SELECT_REDDIT = 'SELECT_REDDIT'
+export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
+
+
+
