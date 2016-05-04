@@ -1,12 +1,13 @@
 import { CHANGE_CITY, REQUEST_WEATHER,
- RECEIVE_WEATHER, ADD_CITY,
- REQUEST_POSTS, RECEIVE_POSTS, SELECT_REDDIT, INVALIDATE_REDDIT
+ RECEIVE_WEATHER, ADD_CITY, NO_CITY
 } from '../constants/ActionTypes';
 
 const initialState = {
-	city: 'paris',
-	currentTemperature: '0'
-	// cities: []
+	// city: 'paris',
+  forecast: {
+    city : {name : 'Paris', country: 'FR'},
+    list : [ {temp: {day : ''}}]
+  }
 }
 
 export default function weatherApp(state = initialState, action) {
@@ -16,21 +17,21 @@ export default function weatherApp(state = initialState, action) {
 				city: action.city,
 				currentTemperature: action.currentTemperature
 			})
-    case INVALIDATE_REDDIT:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      })
-    case REQUEST_POSTS:
+    case REQUEST_WEATHER:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
       })
-    case RECEIVE_POSTS:
+    case RECEIVE_WEATHER:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt
+        forecast: action.forecast,
+        cityError: ""
+      })
+    case NO_CITY:
+      return Object.assign({}, state, {
+        cityError: "No City Found"
       })
 
 		default:

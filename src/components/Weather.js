@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import LocationBar from '../components/LocationBar';
+import WeekWeather from '../components/WeekWeather';
+import getDay from '../utils/weekUtil';
 
 export default class Weather extends Component {
   constructor(props, context) {
@@ -8,17 +10,19 @@ export default class Weather extends Component {
 
   componentDidMount() {
     const { weather, actions } = this.props;
-    actions.fetchWeather(weather.city);
+    actions.fetchWeather(weather.forecast.city.name);
     // dispatch(fetchPostsIfNeeded(selectedReddit))
   }
 
   render() {
     let input;
     const { weather } = this.props;
-
+    const { forecast } = weather;
+    const currentDay = forecast.list[0]; //First list is the current day
+    const restWeek = forecast.list.slice(1);
+    const currentDayName = getDay(currentDay.dt);
     return (
-      <div className="counter-container">
-        <LocationBar city={weather.city} />
+      <div className="card counter-container">
         <div className="counter-num-label">
           <form onSubmit={e => {
               e.preventDefault()
@@ -28,7 +32,7 @@ export default class Weather extends Component {
               this.props.actions.fetchWeather(input.value)
               input.value = ''
             }}>
-              <input ref={node => {
+              <input placeholder="Enter City" ref={node => {
                 input = node
               }} />
               <button type="submit">
@@ -36,9 +40,18 @@ export default class Weather extends Component {
               </button>
           </form>
         </div>
+        <LocationBar city={forecast.city} cityError={weather.cityError}/>
         <br />
-        <div className="counter-buttons">
+        <div className="temperature">
+          {currentDay.temp.day}, {currentDayName}
         </div>
+        
+        <h3> Forecast for the week </h3>
+        <ul className="weekList">
+          {restWeek.map(day =>
+            <WeekWeather key={day.dt} {...day}/>
+          )}
+        </ul>
       </div>
     );
   }

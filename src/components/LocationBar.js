@@ -6,17 +6,14 @@ export default class LocationBar extends Component {
   }
 
   render() {
-    const { city } = this.props;
+    const { city, cityError } = this.props;
 
     return (
       <div className="card counter-container">
-        <div className="counter-num-label">{city}</div>
+        <div className="counter-num-label">{city.name}, {city.country}</div>
+        <div className="error">{cityError}</div>
         <br />
       </div>
     );
   }
 }
-
-// LocationBar.propTypes = {
-//   location: PropTypes.number.isRequired,
-// };
