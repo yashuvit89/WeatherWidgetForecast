@@ -17,7 +17,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(3001, 'localhost', (err) => {
+app.listen(process.env.PORT || 3001, 'localhost', (err) => {
   if (err) {
     console.log(err);
     return;
@@ -25,3 +25,7 @@ app.listen(3001, 'localhost', (err) => {
 
   console.log('Listening at http://localhost:3001');
 });
+
+// http.listen(process.env.PORT || 3000, function(){
+//   console.log('listening on', http.address().port);
+// });

@@ -20,8 +20,8 @@ module.exports = class Root extends Component {
           <App />
           {/* Being the dev version of our Root component, we include DevTools below 
 
-          <DevTools visibleOnLoad={false} store={store}/>
           */}
+          <DevTools visibleOnLoad={false} store={store}/>
         </div>
       </Provider>
     );
